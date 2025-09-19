@@ -1,9 +1,18 @@
 import { TfiNotepad } from "react-icons/tfi";
 import { FaFolderClosed, FaBookBookmark } from "react-icons/fa6";
 import { IoIosCloudDone } from "react-icons/io";
+import BoxSave from '../assets/img/box.png'
+import anita from '../assets/img/anita.jpg'
+import james from '../assets/img/james.jpg'
+import sarah from '../assets/img/sarah.jpg'
+import daniel from '../assets/img/daniel.jpg'
+
 
 
 const LandingPage = () => {
+    console.log(BoxSave)
+    const testimonials:string[]=[anita,james,sarah,daniel]
+
   return (
     <>
     <section className="hero-page h-screen flex justify-center items-center">
@@ -26,7 +35,7 @@ const LandingPage = () => {
             </div>
 
             <div
-                className="image-container mt-4 md:mt-1 flex justify-center h-70 items-center bg-[url(./img/box.png)] bg-center bg-no-repeat bg-cover">
+                className="image-container mt-4 md:mt-1 flex justify-center h-70 items-center  bg-center bg-no-repeat bg-cover" style={{backgroundImage:`url(${BoxSave})`}}>
 
             </div>
         </div>
@@ -46,7 +55,7 @@ const LandingPage = () => {
 
         <div className="bg-white py-4 px-1 md:py-4 md:px-2 md:max-h-30 md:min-h-30 rounded-md shadow-sm">
             <div className="flex gap-1 px-2 items-center">
-                <FaFolderClosed className="size-6 md:size-7 lg:size-10 text-[#3B82F6]" />
+                <FaBookBookmark className="size-6 md:size-7 lg:size-10 text-[#F59E0B]"/>
                 <h3 className="text-base md:text-xl lg:text-2xl font-bold text-blue-900">Bookmarks</h3>
             </div>
             <p className="px-2 mt-2 text-sm lg:text-base text-gray-700">Save and categorize your favorite links.
@@ -55,7 +64,7 @@ const LandingPage = () => {
 
         <div className="bg-white py-4 px-1 md:py-4 md:px-2 md:max-h-30 md:min-h-30  rounded-md shadow-sm">
             <div className="flex gap-1 px-2 items-center">
-                <FaBookBookmark className="size-6 md:size-7 lg:size-10 text-[#F59E0B]"/>
+                 <FaFolderClosed className="size-6 md:size-7 lg:size-10 text-[#3B82F6]"/>
                 <h3 className="text-base md:text-xl lg:text-2xl font-bold text-blue-900">Tags & Folders</h3>
             </div>
             <p className="px-2 mt-2 text-sm  lg:text-base text-gray-700">Keep everything neatly organized.</p>
@@ -73,7 +82,7 @@ const LandingPage = () => {
     
 
     <section className="min-h-40 flex flex-col justify-center items-center">
-        <h2 className="text-lg sm:text-xl md:text-2xl lg:3xl font-semibold text-blue-900 py-4">Why SaveSpace?</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:3xl black ladyfont-semibold text-blue-900 py-4">Why SaveSpace?</h2>
         <div className="qoutes grid sm:grid-cols md:grid-cols-3 italic gap-2 px-2 text-sm lg:text-base text-gray-800">
             <div className="py-4 px-4 rounded-2xl shadow-lg">
                 <blockquote className="text-blue-900 font-semibold">"Save notes instantly"</blockquote>
@@ -102,7 +111,7 @@ const LandingPage = () => {
 
             <div className="p-6 h-auto rounded-md bg-white shadow-md">
                 <div className="img-container">
-                    <img src="src/img/anita.jpg" className="w-auto h-auto" alt=""/>
+                    <img src={testimonials[0]} className="w-auto h-auto" alt=""/>
                 </div>
                 <div className="testimonia-content">
                     <p className="text-gray-700 italic my-4 text-sm lg:text-base">“At work I juggle notes, project links,
@@ -122,7 +131,7 @@ const LandingPage = () => {
 
             <div className="p-6 h-auto bg-white rounded-2xl shadow-md">
                 <div className="img-container">
-                    <img src="src/img/arm.jpg" className="w-auto h-auto" alt="" />
+                    <img src={testimonials[1]} className="w-auto h-auto" alt="" />
                 </div>
                 <div className="testimonia-content">
                     <p className="text-gray-700 italic my-4">“I use SaveSpace daily to save recipes, articles, and random
@@ -144,7 +153,7 @@ const LandingPage = () => {
 
             <div className="p-6 h-auto bg-white rounded-2xl shadow-md">
                 <div className="img-container">
-                    <img src="src/img/anita.jpg" className="w-auto h-auto" alt=""/>
+                    <img src={daniel} className="w-auto h-auto" alt=""/>
                 </div>
                 <div className="testimonia-content ">
                     <p className="text-gray-700 italic my-4">As a developer, I’m constantly saving tutorials and docs.
@@ -164,7 +173,7 @@ const LandingPage = () => {
 
             <div className="p-6 h-auto bg-white rounded-2xl shadow-md">
                 <div className="img-container">
-                    <img src="src/img/anita.jpg" className="w-auto h-auto" alt=""/>
+                    <img src={testimonials[2]} className="w-auto h-auto" alt=""/>
                 </div>
                 <div className="testimonia-content">
                     <p className="text-gray-700 italic my-4">“SaveSpace has completely changed the way I take notes for
