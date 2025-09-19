@@ -24,7 +24,6 @@ const AllBookmarks = () => {
                     return <BookmarkList url={url.url} title={url.title} key={url.id} id={url.id}/>
                   })
                 }
-                
                 {/* <!-- end --> */} 
             </div>
         </div>
