@@ -2,22 +2,10 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoMdAdd } from "react-icons/io";
 import { LuNotebookPen } from "react-icons/lu";
 import { FcBookmark } from "react-icons/fc";
-import NoteList from "./NoteList";
 import BookmarkList from "./BookmarkList";
+import NoteList from "./NoteList";
+import { notes, urls } from "./data";
 
-type note = {
-    id: number;
-    title: string;
-    desciption: string;
-    createdAt: Date;
-}
-type urlLink ={
-    id:number;
-    title:string;
-    url:string;
-}
-const notes: note[] = [{ id: 243, title: "The dog barked", desciption: "On my way to work", createdAt: new Date() }, {id:437, title:"Compound of the unknown", desciption:"The horrors of war", createdAt:new Date()}]
-const urls:urlLink[] =[{id:321, title:"Attack on titan", url:"www.dowqlattackontitan.net"},{id:271, title:"Research", url:"www.seacherbooks.com"}]
 
 const Home = () => {
     return (
