@@ -1,9 +1,23 @@
 import { IoMdAdd } from "react-icons/io";
 import { MdOutlineTitle } from "react-icons/md";
 import { TiInfoLarge } from "react-icons/ti";
+import { useForm, type FieldValues} from "react-hook-form";
+
+interface noteData{
+    title:string;
+    description:string
+}
 
 
 function AddNote() {
+    const {register, handleSubmit, formState:{errors}}= useForm<noteData>()
+    
+    const onSubmitHandler = (data:FieldValues)=>{
+        console.log(data)
+    }
+   console.log(errors);
+   
+
   return (
     <main className="h-screen flex justify-center items-center ">
      <div className="bg-white shadow-2xl rounded-2xl p-6 min-w-50 md:min-w-100">
@@ -14,16 +28,17 @@ function AddNote() {
             <IoMdAdd className="size-9 font-semibold text-gray-800" />
         </div>
         <div>
-            <form className="my-4">
+            <form className="my-4" onSubmit={handleSubmit(onSubmitHandler)}>
                 <div className="flex flex-col gap-1">
                     <label htmlFor="title" className="text-sm md:text-base text-gray-700 font-medium flex items-center">Title <MdOutlineTitle  className="size-5" /></label>
-                    <input type="text" className="border border-gray-300 p-1 focus:border-blue-500 focus:ring focus:ring-blue-200 bg-gray-50 rounded-md placeholder:text-gray-400" name="title" id="title" placeholder="Title"/>
+                    <input type="text" {...register("title",{required:true})} className="border border-gray-300 p-1 focus:border-blue-500 focus:ring focus:ring-blue-200 bg-gray-50 rounded-md placeholder:text-gray-400" name="title" id="title" placeholder="Title"/>
+                    {errors.title?.type === "required" && <p className="text-red-800 text-sm">Title can't be empty</p>}
                 </div>
 
                 <div className="my-4 flex flex-col gap-1">
                     <label htmlFor="description" className="text-sm text-gray-700 font-medium flex items-center">Description <TiInfoLarge className="size-5" /></label>
-                    <textarea placeholder="Write description here..." className="w-auto min-h-30 bg-gray-50 text-sm placeholder:text-gray-400 rounded-md border  border-gray-300 p-1 focus:border-blue-500 focus:ring focus:ring-blue-200"></textarea>
-                    <p className="text-red-500 text-sm">Description can't be empty</p>
+                    <textarea  {...register("description",{required:true})} placeholder="Write description here..." className="w-auto min-h-30 bg-gray-50 text-sm placeholder:text-gray-400 rounded-md border  border-gray-300 p-1 focus:border-blue-500 focus:ring focus:ring-blue-200"></textarea>
+                    {errors.description?.type === "required" && <p className="text-red-800 text-sm">Description can't be empty</p>}
                 </div>
 
                 <div className="flex justify-between">
