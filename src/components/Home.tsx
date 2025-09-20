@@ -4,7 +4,7 @@ import { LuNotebookPen } from "react-icons/lu";
 import { FcBookmark } from "react-icons/fc";
 import BookmarkList from "./BookmarkList";
 import NoteList from "./NoteList";
-import { notes, urls } from "./data";
+import { notes, urls } from "./dataList";
 
 
 const Home = () => {
@@ -43,23 +43,23 @@ const Home = () => {
                             {/* <!-- Note --> */}
                             <div className="note-content flex flex-col gap-1 md:gap-2 md:gap-4 p-1 shadow-md md:p-2">
                                 <h4 className="font-semibold text-md md:text-2xl text-gray-600 flex items-center gap-2"><LuNotebookPen className="size-5" />Notes
-                                    </h4>
-                                    {
-                                        notes.map((note)=>{
-                                            return  <NoteList id={note.id} key={note.id} title={note.title} description={note.desciption} createdAt={note.createdAt}/>
-                                        })
-                                    }
+                                </h4>
+                                {
+                                    notes.map((note) => {
+                                        return <NoteList id={note.id} key={note.id} title={note.title} description={note.desciption} createdAt={note.createdAt} />
+                                    })
+                                }
                             </div>
 
                             {/* <!-- Bookmarks --> */}
                             <div className="Bookmark p-1 shadow-md">
                                 <div className="flex flex-col gap-1 md:gap-2">
-                                    <h3 className="text-md font-semibold text-md text-gray-600 md:text-2xl flex items-center gap-2"><FcBookmark className="size-6"/>Bookmarks</h3>
-                                   {
-                                    urls.map((url)=>{
-                                        return <BookmarkList key={url.id} url={url.url} id={url.id} title={url.title}/> 
-                                    })
-                                 }
+                                    <h3 className="text-md font-semibold text-md text-gray-600 md:text-2xl flex items-center gap-2"><FcBookmark className="size-6" />Bookmarks</h3>
+                                    {
+                                        urls.map((url) => {
+                                            return <BookmarkList key={url.id} url={url.url} id={url.id} title={url.title} />
+                                        })
+                                    }
                                 </div>
                             </div>
 
