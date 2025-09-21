@@ -1,9 +1,12 @@
 import { IoMdAdd } from "react-icons/io";
 import { MdOutlineTitle } from "react-icons/md";
 import { TiInfoLarge } from "react-icons/ti";
-import { useForm, type FieldValues} from "react-hook-form";
+import { useForm, type SubmitHandler} from "react-hook-form";
 import {z} from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNoteStore } from "./store/noteStore";
+
+
 
 
 
@@ -18,11 +21,19 @@ type noteData = z.infer<typeof schema>;
 
 function AddNote() {
     const {register, handleSubmit, formState:{errors, isValid}}= useForm<noteData>({resolver:zodResolver(schema)})
-    
-    const onSubmitHandler = (data:FieldValues)=>{
-        console.log(data)
+    const addNote = useNoteStore((state)=>state.addNote)
+    const notes = useNoteStore((state)=>state.notes)
+
+    const onSubmitHandler:SubmitHandler<noteData> = (data)=>{
+        const {title, description} = data
+        addNote({
+            title,
+            description,
+            createdAt:new Date()
+        })
+        console.log(notes)
     }
-   console.log(errors);
+
    
 
   return (
@@ -49,7 +60,7 @@ function AddNote() {
                 </div>
 
                 <div className="flex justify-between">
-                    <button type="submit" disabled={!isValid}  className={`py-2 px-8 ${isValid ? 'bg-blue-600':'bg-blue-400'} transition-all duration-0 hover:bg-blue-700 text-white rounded-lg shadow`}>Save</button>
+                    <button type="submit" disabled={!isValid}  className={`py-2 px-8 ${isValid ? 'bg-blue-600':'bg-blue-400'} transition-all duration-0 ${isValid && 'hover:bg-blue-700'} text-white rounded-lg shadow`}>Save</button>
                     <button className="py-2 px-8 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg">Cancel</button>
                 </div>
             </form>

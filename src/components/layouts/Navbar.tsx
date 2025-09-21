@@ -1,4 +1,6 @@
+import { NavLink } from 'react-router-dom'
 import Logo from '../../assets/logo.png'
+
 
 const Navbar = () => {
     return (
@@ -9,9 +11,11 @@ const Navbar = () => {
                 </div>
 
                 <nav className="flex gap-1 items-center">
-                    <span className="text-sm"><a href="" className="p-2">Add Note</a></span>
-                    <span className="text-sm"><a href="" className="p-2">Add Bookmark</a></span>
-                    <span className="text-sm"><a href="" className="p-2">Login</a></span>
+                    <NavLink to="/addnote" className="p-2"><span className="text-sm">Add Note</span></NavLink>
+                    <NavLink to="/home" className="p-2"><span className="text-sm">Home</span></NavLink>
+                    <NavLink to="/addbookmark" className="p-2"><span className="text-sm">Add Bookmark</span></NavLink>
+                    <NavLink to="/signup" className="p-2"><span className="text-sm">signup</span></NavLink>
+                    <NavLink to="/login" className="p-2"><span className="text-sm">Login</span></NavLink>
                 </nav>
             </header>
         </>

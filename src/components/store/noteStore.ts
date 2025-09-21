@@ -4,8 +4,8 @@ export interface Note{
      id?:number;
      title:string;
      description:string;
+     createdAt:Date
 }
-
 
 interface NoteState{
     notes:Note[];
