@@ -1,5 +1,3 @@
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { IoMdAdd } from "react-icons/io";
 import { LuNotebookPen } from "react-icons/lu";
 import { FcBookmark } from "react-icons/fc";
 import BookmarkList from "./BookmarkList";
@@ -16,28 +14,7 @@ const Home = () => {
     return (
         <>
             <main className="flex justify-center h-screen">
-
                 <div className="mt-4 md:w-3/4">
-                    <div className="flex justify-between flex-wrap gap-2 md:gap-8">
-                        <div className="flex justify-start gap-2 md:gap-4 ">
-
-                            <div className="flex items-center justify-center px-4">
-                                <button className="bg-blue-600 text-white hover:bg-white hover:text-gray-800 p-2 md:p-3 rounded-xl shadow-lg font-semibold text-sm flex items-center">
-                                    <IoIosAddCircleOutline className="size-6" /> Add Note
-                                </button>
-                            </div>
-
-                            <div className="flex items-center justify-center">
-                                <button className="bg-blue-600 text-white hover:bg-white hover:text-gray-800 p-2 md:p-3 rounded-xl shadow-lg text-sm font-semibold flex items-center">
-                                    <IoMdAdd className="size-6" /> Add Bookmark
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className=" flex items-center justify-start gap-2 mx-4 border-1 rounded-md border-gray-300 shadow-md">
-                            <button className="p-1 md:p-3 py-2 text-2xl text-base font-semibold rounded-md text-gray-800">Notes <sup className="m-1 bg-blue-600 text-white shadow-md p-1 rounded-sm font-medium">{notes.length}</sup></button>
-                            <button className="p-1 md:p-3 text-base font-semibold rounded-md text-gray-800">Bookmarks <sup className="m-1 bg-blue-600 text-white shadow-md p-1 rounded-sm font-medium">{bookmarks.length}</sup></button></div>
-                    </div>
 
                     <div className="mt-2 py-4">
                         <div className="flex justify-center items-center">
