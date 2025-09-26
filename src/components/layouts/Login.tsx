@@ -4,6 +4,8 @@ import { IoMailOutline } from "react-icons/io5";
 import { IoKeyOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import z from "zod";
+import { useUserStore } from "../store/userStore";
+import axios from "axios";
 
 const schema = z.object({
     email:z.email(),
@@ -15,8 +17,14 @@ type loginData = z.infer<typeof schema>
 
 const Login = () => {
     const {register, handleSubmit, formState:{errors, isValid}} = useForm<loginData>({resolver:zodResolver(schema)})
-
-    const submitLogin:SubmitHandler<loginData> =(data)=>{
+    const login = useUserStore((state)=>state.login)
+    const submitLogin:SubmitHandler<loginData> = async(data)=>{
+        await axios.post('http://localhost:3000/auth/login', data).then((res)=>{
+            console.log(res.data);
+        }).catch(err =>{
+            console.log(err);
+            
+        })
         console.log(data);
         
     }

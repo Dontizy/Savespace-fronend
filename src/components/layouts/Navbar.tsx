@@ -54,6 +54,10 @@ const Navbar = () => {
         className="h-full flex items-center justify-center gap-[5px] group px-[5px] transition-colors duration-200 hover:bg-white">
         <button className="no-underline font-medium text-white  group-hover:text-blue-700">Logout</button>
       </span>
+      <span
+        className="h-full flex items-center justify-center gap-[5px] group px-[5px] transition-colors duration-200 hover:bg-white">
+        <NavLink to="/login" className="no-underline font-medium text-white  group-hover:text-blue-700">Login</NavLink>
+      </span>
     </div>
   </header>
 
