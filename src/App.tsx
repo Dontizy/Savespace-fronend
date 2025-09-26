@@ -1,6 +1,6 @@
 import LandingPage from "./components/LandingPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import SharedLayout from "./components/SharedLayout"
+import SharedLayout from "./components/layouts/SharedLayout"
 import Login from "./components/layouts/Login"
 import Signup from "./components/layouts/Signup"
 import Home from "./components/Home"
@@ -20,17 +20,17 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SharedLayout/>}>
-            <Route index element={<LandingPage/>}/>
-            <Route path="/addnote" element={<AddNote/>}/>
-            <Route path="/addbookmark" element={<AddBookmarks/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/signup" element={<Signup/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/notes" element={<AllNotes/>}/>
-            <Route path="/bookmarks" element={<AllBookmarks/>}/>
-            <Route path="/resetpassword" element={<ResetPassword/>}/>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<LandingPage />} />
+            <Route path="/addnote" element={<AddNote />} />
+            <Route path="/addbookmark" element={<AddBookmarks />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/notes" element={<AllNotes />} />
+            <Route path="/bookmarks" element={<AllBookmarks />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
           </Route>
         </Routes>
       </BrowserRouter>

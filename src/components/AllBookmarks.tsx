@@ -1,11 +1,11 @@
 import { MdOutlineSearch } from "react-icons/md";
 import { FcBookmark } from "react-icons/fc";
 import BookmarkList from "./BookmarkList";
-import { urls } from "./dataList";
-
+import { useBookmarkStore } from "./store/bookmarkStore";
 
 
 const AllBookmarks = () => {
+  const bookmarks = useBookmarkStore((state)=>state.bookmarks)
   return (
     <div className="Bookmarks flex justify-center my-4 py-4 h-screen">
       <div className="Bookmark p-1 shadow-md w-11/12 md:w-3/5">
@@ -20,8 +20,8 @@ const AllBookmarks = () => {
         <div className="flex flex-col gap-1 md:gap-2">
           {/* <!-- start --> */}
           {
-            urls.map((url) => {
-              return <BookmarkList url={url.url} title={url.title} key={url.id} id={url.id} />
+            bookmarks.map((bookmark) => {
+              return <BookmarkList url={bookmark.url} name={bookmark.name} key={bookmark.id} id={bookmark.id} />
             })
           }
           {/* <!-- end --> */}

@@ -1,8 +1,10 @@
 import { SlLink } from "react-icons/sl";
 import { FaInfo } from "react-icons/fa6";
 import { z } from "zod";
-import { useForm, type FieldValues } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useBookmarkStore } from "./store/bookmarkStore";
+
 
 
 const schema = z.object({
@@ -18,10 +20,10 @@ type bookmarkData = z.infer<typeof schema>
 
 const AddBookmarks = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<bookmarkData>({ resolver: zodResolver(schema) })
+    const addBookmark = useBookmarkStore((state)=>state.addBookmark)
 
-
-    const onSubmitBookmark = (data: FieldValues) => {
-        console.log(data);
+    const onSubmitBookmark:SubmitHandler<bookmarkData> = (data) => {
+        addBookmark(data)
     }
 
 
