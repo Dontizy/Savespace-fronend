@@ -2,15 +2,36 @@ import { LuCalendarClock } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import api from "../serviceAxios";
+import UseErrorCode from "./hooks/UseErrorCode";
+import { toast } from "sonner";
+import { IoTrashSharp } from "react-icons/io5";
+import { useNoteStore } from "./store/noteStore";
 
 interface NoteListProps{
-    id?:number;
+    id:number;
     title:string;
     description:string;
     createdAt?:Date;
 }
 dayjs.extend(relativeTime)
 const NoteList = ({id, title,description, createdAt}:NoteListProps) => {
+    const {getError} = UseErrorCode()
+    const {removeNote} = useNoteStore()
+    const deleteNote = async(noteId:number)=>{
+        try{
+            const res = await api.delete(`/note/${noteId}`)
+            removeNote(noteId)
+            const {message} =  res.data
+            toast.success(message)
+        }catch(error:any){
+            console.log(error)
+            const {status} = error
+            const {message} = error.response?.data
+            const msg = error.message
+            getError(status, message, msg)
+        }
+    }
 
     return (  
                 <div
@@ -25,9 +46,12 @@ const NoteList = ({id, title,description, createdAt}:NoteListProps) => {
                     </div>
                     </NavLink>
                     <div
-                        className="h-4 bg-gray-200 rounded-b-sm p-1 flex border-b-1 border-blue-500 justify-end items-center px-1">
-                        <LuCalendarClock className="size-4 text-gray-700" />
-                        <p className="text-sm italic p-1 text-gray-800">{dayjs(createdAt).fromNow()}</p>
+                        className="h-4 bg-gray-200 rounded-b-sm py-2 flex border-b-1 border-blue-500 justify-between items-center px-1">
+                        <button onClick={()=>deleteNote(id)} className="flex gap-1 items-center text-sm text-gray-600"> <IoTrashSharp className="size-4 text-red-400"/> Delete</button>
+                        <div className="flex justify-end items-center">
+                        <LuCalendarClock className="size-4 text-gray-600" />
+                        <p className="text-sm italic p-1 text-gray-600">{dayjs(createdAt).fromNow()}</p>
+                        </div>
                     </div>
                 </div>
            
