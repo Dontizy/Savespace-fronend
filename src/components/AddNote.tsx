@@ -5,7 +5,9 @@ import { useForm, type SubmitHandler} from "react-hook-form";
 import {z} from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNoteStore } from "./store/noteStore";
-
+import api from "../serviceAxios";
+import { useNavigate } from "react-router-dom";
+import UseErrorCode from "./hooks/UseErrorCode";
 
 
 
@@ -22,16 +24,22 @@ type noteData = z.infer<typeof schema>;
 function AddNote() {
     const {register, handleSubmit, formState:{errors, isValid}}= useForm<noteData>({resolver:zodResolver(schema)})
     const addNote = useNoteStore((state)=>state.addNote)
-    const notes = useNoteStore((state)=>state.notes)
+    const navigate = useNavigate()
+    const {getError} = UseErrorCode()
 
-    const onSubmitHandler:SubmitHandler<noteData> = (data)=>{
-        const {title, description} = data
-        addNote({
-            title,
-            description,
-            createdAt:new Date()
+    const onSubmitHandler:SubmitHandler<noteData> =async(data)=>{
+        await api.post("/note/create", data).then((res)=>{
+            addNote(res.data)
+            navigate('/dashboard')
+            console.log(res.data)
+        }).catch(err=>{
+            console.log(err);
+            const code = err.status
+            const msg = err.response?.data.message
+            getError(code, msg)
+            
         })
-        console.log(notes)
+        // console.log(notes)
     }
 
    

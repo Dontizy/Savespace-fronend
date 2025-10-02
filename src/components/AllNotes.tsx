@@ -9,6 +9,8 @@ import { useNoteStore } from "./store/noteStore";
 
 const AllNotes = () => {
     const notes = useNoteStore((state)=>state.notes)
+    
+
     return (
         <div className="note flex justify-center my-4 py-4 h-screen">
             <div className="note p-1 shadow-md w-11/12 md:w-3/5">
